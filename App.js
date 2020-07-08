@@ -1,14 +1,31 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { Asset } from "expo-asset";
+import { AppLoading } from "expo";
+import LoginScreen from "./app/LoginScreen";
+
+const cacheImages = (images) => {
+  return images.map((image) => {
+    if (typeof image === "string") {
+      return Image.prefetch(image);
+    } else {
+      return Asset.fromModule(image).downloadAsync();
+    }
+  });
+};
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello World</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [isReady, setReady] = useState(false);
+
+  async function _loadAssetsAsync() {
+    const imageAssets = cacheImages([require("./assets/homeBG.png")]);
+    await Promise.all([...imageAssets]);
+  }
+
+  const loginScreen = !isReady ? <AppLoading startAsync={_loadAssetsAsync} onFinish={() => setReady(true)} onError={console.warn} /> : <LoginScreen />;
+
+  return loginScreen;
 }
 
 const styles = StyleSheet.create({
