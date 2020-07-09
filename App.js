@@ -1,6 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { Asset } from "expo-asset";
 import { AppLoading } from "expo";
 import LoginScreen from "./app/LoginScreen";
