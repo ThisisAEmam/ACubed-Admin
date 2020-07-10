@@ -25,6 +25,10 @@
       "favicon": "./assets/favicon.png"
     },
     "description": "Admin Dashboard app - ACubed for Web Solutions",
-    "githubUrl": "https://github.com/ThisisAEmam/ACubed-Admin"
+    "githubUrl": "https://github.com/ThisisAEmam/ACubed-Admin",
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": ["expo.ts", "expo.tsx", "expo.js", "expo.jsx", "ts", "tsx", "js", "jsx", "json", "wasm", "svg"]
+    }
   }
 }

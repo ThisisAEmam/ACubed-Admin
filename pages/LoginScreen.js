@@ -146,7 +146,7 @@ const LoginScreen = (props) => {
   const signinHandler = () => {
     const realEmail = "abdo";
     const realPassword = "123";
-    if (realEmail === email && realPassword === password) {
+    if (realEmail === email.toLowerCase() && realPassword === password.toLowerCase()) {
       setWrongCred(false);
       setLoggedIn(true);
       saveInStorage("loggedIn", "true");
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 250,
+    width: width / 1.8,
   },
   buttonContainer: {
     height: height / 2.5,
