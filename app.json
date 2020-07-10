@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ACubed Admin",
-    "slug": "acubedAdmin",
+    "name": "ACubed Admin Dashboard",
+    "slug": "acubed-admin-dashboard",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,8 +17,14 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.acubedweb.acubedadmindashboard",
+      "versionCode": 1
+    },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Admin Dashboard app - ACubed for Web Solutions",
+    "githubUrl": "https://github.com/ThisisAEmam/ACubed-Admin"
   }
 }
