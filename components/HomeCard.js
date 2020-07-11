@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from "react-native";
+import * as RootNavigation from "../RootNavigation";
 import Feedbacks from "../assets/Feedbacks.svg";
 import Services from "../assets/Services.svg";
 import Projects from "../assets/Projects.svg";
@@ -32,7 +33,7 @@ const HomeCard = (props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        props.homeProps.navigation.navigate(props.name);
+        RootNavigation.navigate(props.name);
       }}>
       <View style={{ ...styles.container, backgroundColor: props.backgroundColor }}>
         <View style={styles.imageContainer}>{image}</View>

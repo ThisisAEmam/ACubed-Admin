@@ -1,48 +1,35 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { StyleSheet, View, Alert, BackHandler, AsyncStorage, FlatList } from "react-native";
 import { Context } from "../context/Context";
 import HomeCard from "../components/HomeCard";
 import Cards from "../data/Cards";
 
 const HomeScreen = (props) => {
-  const { isLoggedIn, setLoggedIn } = useContext(Context);
-
-  const saveInStorage = async (key, value) => {
-    try {
-      await AsyncStorage.setItem(key, value);
-      setLoggedIn(false);
-    } catch (err) {
-      alert(err);
-    }
-  };
+  const { isLoggedIn, backPressCount, setBackPressCount } = useContext(Context);
 
   useEffect(() => {
     !isLoggedIn ? props.navigation.navigate("Login") : null;
   }, [isLoggedIn]);
 
-  const logout = () => {
-    saveInStorage("loggedIn", "false");
-    setLoggedIn(false);
-    props.navigation.navigate("Login");
-  };
-
-  // useEffect(() => {
-  //   const backAction = () => {
-  //     Alert.alert("Hold on!", "Are you sure you want to logout?", [
-  //       {
-  //         text: "Cancel",
-  //         onPress: () => null,
-  //         style: "cancel",
-  //       },
-  //       { text: "YES", onPress: () => logout() },
-  //     ]);
-  //     return true;
-  //   };
-
-  //   const backHandler = BackHandler.addEventListener("hardwareBackPress", backAction);
-
-  //   return () => backHandler.remove();
-  // }, []);
+  useEffect(() => {
+    const backAction = () => {
+      setBackPressCount(backPressCount + 1);
+      if (backPressCount === 1) {
+        setBackPressCount(0);
+        Alert.alert("Hold on!", "Are you sure you want to exit ACubed admin dashboard app?", [
+          {
+            text: "Cancel",
+            onPress: () => null,
+            style: "cancel",
+          },
+          { text: "YES", onPress: () => BackHandler.exitApp() },
+        ]);
+      }
+      return true;
+    };
+    const backHandler = BackHandler.addEventListener("hardwareBackPress", backAction);
+    return () => backHandler.remove();
+  }, [backPressCount]);
 
   return (
     <View style={styles.container}>
@@ -51,7 +38,7 @@ const HomeScreen = (props) => {
         keyExtractor={(item) => item.name}
         horizontal={false}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <HomeCard name={item.name} backgroundColor={item.backgroundColor} textColor={item.textColor} homeProps={props} />}
+        renderItem={({ item }) => <HomeCard name={item.name} backgroundColor={item.backgroundColor} textColor={item.textColor} />}
       />
     </View>
   );

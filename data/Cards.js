@@ -3,23 +3,23 @@ const { default: Colors } = require("../Colors");
 const Cards = [
   {
     name: "Services",
-    backgroundColor: Colors.primary,
-    textColor: "#f5f5f5",
+    backgroundColor: Colors.ServicesBackgroundColor,
+    textColor: Colors.ServicesTextColor,
   },
   {
     name: "Projects",
-    backgroundColor: "#A6D785",
-    textColor: "#3f3d56",
+    backgroundColor: Colors.ProjectsBackgroundColor,
+    textColor: Colors.ProjectsTextColor,
   },
   {
     name: "Feedbacks",
-    backgroundColor: "#9370DB",
-    textColor: "#f5f5f5",
+    backgroundColor: Colors.FeedbacksBackgroundColor,
+    textColor: Colors.FeedbacksTextColor,
   },
   {
     name: "Members",
-    backgroundColor: "#7AC5CD",
-    textColor: "#444053",
+    backgroundColor: Colors.MembersBackgroundColor,
+    textColor: Colors.MembersTextColor,
   },
 ];
 export default Cards;

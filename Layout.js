@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { StyleSheet, AsyncStorage, TouchableOpacity, Text, Alert, Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { navigationRef } from "./RootNavigation";
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import LoginScreen from "./pages/LoginScreen";
 import HomeScreen from "./pages/HomeScreen";
 import { Context } from "./context/Context";
 import Colors from "./Colors";
 import ServicesScreen from "./pages/ServicesScreen";
+import ProjectsScreen from "./pages/ProjectsScreen";
 
 const { width, height } = Dimensions.get("window");
 
@@ -14,7 +16,7 @@ const Stack = createStackNavigator();
 
 const Layout = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         screenOptions={{
           gestureEnabled: true,
@@ -31,7 +33,7 @@ const Layout = () => {
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerLeft: null }} />
         <Stack.Screen name="Services" component={ServicesScreen} />
-        <Stack.Screen name="Projects" component={ServicesScreen} />
+        <Stack.Screen name="Projects" component={ProjectsScreen} />
         <Stack.Screen name="Feedbacks" component={ServicesScreen} />
         <Stack.Screen name="Members" component={ServicesScreen} />
       </Stack.Navigator>

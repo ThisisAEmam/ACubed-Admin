@@ -3,8 +3,8 @@ import Layout from "./Layout";
 import ContextProvider from "./context/Context";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://cors-anywhere.herokuapp.com/https://acubed-django.herokuapp.com/api";
-axios.defaults.headers.common["Authorization"] = "Token fee106285cc7281c266b7d38df8e534a9e187492";
+axios.defaults.baseURL = "https://acubed-tech3.herokuapp.com/api";
+axios.defaults.headers.common["Authorization"] = "Token ede5d5abcddd96dafe60b0e4059c03b4d4c754c5";
 
 const App = () => {
   return (
